@@ -1,0 +1,24 @@
+<div class="content" role="main">
+
+  <!-- Highlight Card -->
+      <div class="card highlight-card card-small">
+        <h2 class="default-label">{{product['product_name']}}</h2>
+      </div>
+     
+      <div class="card highlight-card card-small">
+        <p class="default-label">Preço: {{product['price'] | currency: 'BRL'}}</p>
+      </div>
+     
+        <div fxLayout="column" fxLayoutGap="16px">
+          <div fxLayout="row" fxLayoutGap="16px" fxLayout.lt-md="column">
+            <button class="card card-small" (click)="confirmContract()" tabindex="0">
+              Contratar
+            </button>
+            <button class="card card-small" (click)="back()" tabindex="0">
+              Voltar
+            </button>
+          </div>
+        </div>
+        
+</div>
+

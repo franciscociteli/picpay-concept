@@ -1,0 +1,63 @@
+<div class="card-header">
+  <figure *ngIf="product['header']" class="card__thumbnail">
+    <img class="img-header" src="{{product['header'].image}}">
+   </figure>
+</div>
+
+<div class="content" role="main">
+
+  <span style="padding: 5px; padding-bottom: 30px;">
+    <p>{{product['product_description']}}</p>
+  </span>
+
+  <span style="padding: 5px; padding-bottom: 10px;">
+    <p><strong>Receba até {{product.cashback_price | currency: 'BRL'}} de volta em poucos dias se acontecer essas situações:</strong></p>
+  </span>
+  
+  <div class="card highlight-card" *ngFor="let protection of product['protections']">
+    <table style="width: 100%;">
+      <tr>
+        <td>
+          <img src="{{protection.image}}" style="height: 60px;"/>
+        </td>
+        <td><p>{{protection.title}}</p></td>
+      </tr>
+    </table>
+  </div>
+
+ 
+  <div class="card highlight-card card-small">
+    <a href="" style="color: green; font-size: 20px;"><u>Entenda como o seguro funciona</u></a>
+  </div>
+
+  <div class="highlight-card card-bet">
+    <table style="width: 100%;">
+      <tr>
+        <td>
+          <img src="../../assets/img/picpay5.PNG" style="height: 60px;"/>
+        </td>
+        <td>
+          <p style="background-color: #3699E2; width: 150px; padding: 2px; color: #ffff; border-radius: 5px; margin-top: 10px;">E ainda tem sorteio!</p>
+          <p style="font: 10px;">Concorra a um <strong>iPhone 13</strong> por mês ao contratar o seguro. Legal, né?</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <br/>
+
+  <span style="padding: 5px; padding-bottom: 30px;">
+    <p><strong>Ah, e você pode cancelar o seguro quando quiser, sem pagar nada a mais por isso.</strong></p>
+  </span>
+
+ 
+
+  <span style="padding: 5px; padding-bottom: 30px; border-top: 1px solid #bbb;">
+    <p>Ao contratar, você declara que leu as <strong><u><a href="" (click)="viewContractConditions();">condições de contratação</a></u></strong> e está ciente de que o compartilhamento de dados com a seguradora parceira é necessário para a contratação do seguro.</p>
+  </span>
+
+  <span style="padding: 5px; padding-bottom: 30px; border-top: 1px solid #bbb; width: 100%;">
+    <p>Você vai pagar <strong>{{product['price'] | currency: 'BRL'}} por mês</strong></p>
+  </span>
+      
+</div>
