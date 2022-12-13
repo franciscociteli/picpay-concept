@@ -67,6 +67,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
     Android?.confirmContract(JSON.stringify(PAYLOAD));
   }
 
+  calliOSNativeApp() {
+    try {
+       (window as any).webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify(PAYLOAD));
+     } catch(err) {
+         console.log('The native context does not exist yet');
+     }
+   }
   
 
 }
