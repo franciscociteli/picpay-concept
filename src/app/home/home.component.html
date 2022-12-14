@@ -1,6 +1,6 @@
 <div class="card-header">
   <figure *ngIf="product['header']" class="card__thumbnail">
-    <img class="img-header" src="{{product['header'].image}}">
+    <img class="img-header" src="assets/img/headerbg.PNG">
    </figure>
 </div>
 
@@ -59,5 +59,10 @@
   <span style="padding: 5px; padding-bottom: 30px; border-top: 1px solid #bbb; width: 100%;">
     <p>Você vai pagar <strong>{{product['price'] | currency: 'BRL'}} por mês</strong></p>
   </span>
+
+  <div>
+    <button class="button button4" (click)="confirmContract()">Contratar</button>  
+  </div>
+  
       
 </div>
