@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api-service';
 import { PAYLOAD, PRODUCT } from '../services/constants';
+import { calliOSNativeApp, getOriginPlatform } from 'src/js/common_scripts';
 
 interface AndroidType {
   confirmContract(product: any): void;
@@ -51,7 +52,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.confirmContract();
+    //this.confirmContract();
+    this.sendRemoteMessageByPlatform();  
   }
 
   showError(message: string): void {
@@ -63,17 +65,31 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return false;
   }
 
+  sendRemoteMessageByPlatform(){
+    var origin = getOriginPlatform();
+    switch (origin) {
+      case "Android webview":
+        this.confirmContract();
+        break;
+      case "iOS webview":
+        this.calliOSNativeApp(); 
+        break;
+      default:
+        alert("Browser requested");
+        break;
+    }
+  }
+
+  calliOSNativeApp(){
+    try {
+        (window as any).webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify(PAYLOAD));
+      } catch(err) {
+        console.log('The native context does not exist yet');
+      }
+  }
+
   confirmContract() {
     Android?.confirmContract(JSON.stringify(PAYLOAD));
   }
-
-  calliOSNativeApp() {
-    try {
-       (window as any).webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify(PAYLOAD));
-     } catch(err) {
-         console.log('The native context does not exist yet');
-     }
-   }
-  
 
 }
