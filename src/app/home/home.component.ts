@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api-service';
 import { PAYLOAD, PRODUCT } from '../services/constants';
 import { calliOSNativeApp, getOriginPlatform } from 'src/js/common_scripts';
@@ -22,9 +22,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   deviceName: string;
   product: any = "";
   productEx: any = "";
+  env: string = "";
 
   constructor(
               private router: Router,
+              private route: ActivatedRoute,
               private apiService: ApiService) {
 
     this.deviceName = 'teste';
@@ -45,6 +47,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
         console.log(this.productEx['header'].title);
         console.log(this.productEx['protections'][0]);
     });*/
+    this.route.queryParamMap.subscribe((params) => {
+        this.env = params.get('env') as string;
+        //this.orderObj = { ...params.keys, ...params };
+    });
 
     this.product = PRODUCT;
     
@@ -89,7 +95,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   confirmContract() {
-    Android?.confirmContract(JSON.stringify(PAYLOAD));
+    if (this.env == 'android') {
+      this.callAndroidNativeApp();
+    } else if (this.env == 'ios') {
+      this.calliOSNativeApp();
+    }
   }
 
 }

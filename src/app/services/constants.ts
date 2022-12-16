@@ -21,15 +21,15 @@ export let PRODUCT = {
    },
    "protections":[
       {
-         "image":"https://5ce0-2804-5f0c-11ef-800-fdb8-2330-f412-e49e.ngrok.io/assets/img/picpay1.PNG",
+         "image":"../../assets/img/picpay1.PNG",
          "title":"Fizeram compras no seu PicPay Card após roubarem ou você perder seu cartão."
       },
       {
-         "image":"https://5ce0-2804-5f0c-11ef-800-fdb8-2330-f412-e49e.ngrok.io/assets/img/picpay2.PNG",
+         "image":"../../assets/img/picpay2.PNG",
          "title":"Alguém te obrigar a fazer Pix, recarga ou outras transações."
       },
       {
-         "image":"https://5ce0-2804-5f0c-11ef-800-fdb8-2330-f412-e49e.ngrok.io/assets/img/picpay3.PNG",
+         "image":"../../assets/img/picpay3.PNG",
          "title":"Fizerem transações na sua conta PicPay após roubarem seu celular."
       },
       /*{
